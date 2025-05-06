@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messages | JMU CARE System</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/messages.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/dropdown.css">
+  <link rel="stylesheet" href="css/ripple.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-container">
+      <div class="flex items-center gap-2">
+        <a href="dashboard.html" class="logo">JMU CARE</a>
+      </div>
+      
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="dashboard.html" class="nav-link underline-link">Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="nav-link underline-link dropdown-toggle">Applications <i class="fas fa-chevron-down text-xs ml-2"></i></a>
+            <div class="dropdown-menu">
+              <a href="grant-application.html" class="dropdown-item">Grant Application</a>
+              <a href="project-application.html" class="dropdown-item">Project Application</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="nav-link underline-link dropdown-toggle">Search <i class="fas fa-chevron-down text-xs ml-2"></i></a>
+            <div class="dropdown-menu">
+              <a href="search.html?type=grants" class="dropdown-item">Search Grants</a>
+              <a href="search.html?type=projects" class="dropdown-item">Search Projects</a>
+            </div>
+          </li>
+          <li><a href="create-user.html" class="nav-link underline-link">Create User</a></li>
+          <li><a href="messages.html" class="nav-link underline-link">Messages</a></li>
+          <li><a href="report.html" class="nav-link underline-link">Report</a></li>
+        </ul>
+      </nav>
+      
+      <div class="user-nav">
+        <span class="user-welcome">Welcome, <span id="user-name">John</span></span>
+        <div class="user-dropdown">
+          <button class="user-dropdown-btn">
+            <div class="avatar avatar-sm">JD</div>
+          </button>
+          <div class="user-dropdown-content">
+            <div class="user-dropdown-header">
+              <p class="user-dropdown-name">John Doe</p>
+              <p class="user-dropdown-role">Executive Director of JMU CARE</p>
+            </div>
+            <div class="user-dropdown-divider"></div>
+            <a href="#" class="user-dropdown-item">
+              <i class="fas fa-user"></i> Profile
+            </a>
+            <a href="#" class="user-dropdown-item">
+              <i class="fas fa-cog"></i> Settings
+            </a>
+            <div class="user-dropdown-divider"></div>
+            <a href="#" class="user-dropdown-item" id="logout-btn">
+              <i class="fas fa-sign-out-alt"></i> Log out
+            </a>
+          </div>
+        </div>
+        
+        <button class="mobile-menu-btn" aria-label="Open menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <div class="mobile-nav-header">
+      <div class="logo">JMU CARE</div>
+      <button class="mobile-nav-close" aria-label="Close menu">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="mobile-nav-user">
+      <p class="font-bold">John Doe</p>
+      <p class="text-muted">Executive Director of JMU CARE</p>
+      <div class="mobile-nav-divider"></div>
+    </div>
+    
+    <div class="mobile-nav-content">
+      <ul class="mobile-nav-list">
+        <li><a href="dashboard.html" class="mobile-nav-link">Home</a></li>
+        <li><a href="grant-application.html" class="mobile-nav-link">Grant Application</a></li>
+        <li><a href="project-application.html" class="mobile-nav-link">Project Application</a></li>
+        <li><a href="search.html?type=grants" class="mobile-nav-link">Search Grants</a></li>
+        <li><a href="search.html?type=projects" class="mobile-nav-link">Search Projects</a></li>
+        <li><a href="create-user.html" class="mobile-nav-link">Create User</a></li>
+        <li><a href="messages.html" class="mobile-nav-link">Messages</a></li>
+        <li><a href="report.html" class="mobile-nav-link">Report</a></li>
+        <li><a href="#" class="mobile-nav-link mobile-nav-logout" id="mobile-logout-btn">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Main Content -->
+  <main class="container py-4">
+    <div class="mb-6">
+      <h1 class="text-2xl font-semibold text-primary">Messages</h1>
+      <p class="text-muted">Communicate with faculty and administrators</p>
+    </div>
+    
+    <div class="messages-container">
+      <!-- Conversation list -->
+      <div class="conversations-sidebar">
+        <div class="conversations-header">
+          <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="conversation-search" class="search-input" placeholder="Search messages...">
+          </div>
+        </div>
+        
+        <div class="conversations-list" id="conversations-list">
+          <!-- Conversations will be populated by JavaScript -->
+        </div>
+      </div>
+      
+      <!-- Chat area -->
+      <div class="chat-area">
+        <div id="empty-state" class="chat-empty-state">
+          <p class="text-muted">Select a conversation to start messaging</p>
+        </div>
+        
+        <div id="chat-container" class="chat-container hidden">
+          <!-- Chat header -->
+          <div class="chat-header">
+            <div class="chat-header-user">
+              <div id="chat-avatar" class="avatar avatar-md"></div>
+              <div>
+                <h2 id="chat-name" class="font-medium"></h2>
+                <p id="chat-title" class="text-xs text-muted"></p>
+              </div>
+            </div>
+            
+            <div class="chat-header-actions">
+              <button class="btn btn-ghost btn-icon" title="Audio call">
+                <i class="fas fa-phone"></i>
+              </button>
+              <button class="btn btn-ghost btn-icon" title="Video call">
+                <i class="fas fa-video"></i>
+              </button>
+              <button class="btn btn-ghost btn-icon" title="Info">
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Chat messages -->
+          <div class="chat-messages" id="chat-messages">
+            <!-- Messages will be populated by JavaScript -->
+          </div>
+          
+          <!-- Chat input -->
+          <div class="chat-input">
+            <div class="chat-input-container">
+              <button class="chat-input-action" title="Attach file">
+                <i class="fas fa-paperclip"></i>
+              </button>
+              
+              <textarea id="message-input" class="chat-input-textarea" placeholder="Type a message..." rows="1"></textarea>
+              
+              <button id="send-message-btn" class="chat-input-action" title="Send message">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/messages.js"></script>
+</body>
+</html>

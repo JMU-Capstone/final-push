@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grant Details | JMU CARE System</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/grant-details.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/dropdown.css">
+  <link rel="stylesheet" href="css/ripple.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-container">
+      <div class="flex items-center gap-2">
+        <a href="dashboard.html" class="logo">JMU CARE</a>
+      </div>
+      
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="dashboard.html" class="nav-link underline-link">Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="nav-link underline-link dropdown-toggle">Applications <i class="fas fa-chevron-down text-xs ml-2"></i></a>
+            <div class="dropdown-menu">
+              <a href="grant-application.html" class="dropdown-item">Grant Application</a>
+              <a href="project-application.html" class="dropdown-item">Project Application</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="nav-link underline-link dropdown-toggle">Search <i class="fas fa-chevron-down text-xs ml-2"></i></a>
+            <div class="dropdown-menu">
+              <a href="search.html?type=grants" class="dropdown-item">Search Grants</a>
+              <a href="search.html?type=projects" class="dropdown-item">Search Projects</a>
+            </div>
+          </li>
+          <li><a href="create-user.html" class="nav-link underline-link">Create User</a></li>
+          <li><a href="messages.html" class="nav-link underline-link">Messages</a></li>
+          <li><a href="report.html" class="nav-link underline-link">Report</a></li>
+        </ul>
+      </nav>
+      
+      <div class="user-nav">
+        <span class="user-welcome">Welcome, <span id="user-name">John</span></span>
+        <div class="user-dropdown">
+          <button class="user-dropdown-btn">
+            <div class="avatar avatar-sm">JD</div>
+          </button>
+          <div class="user-dropdown-content">
+            <div class="user-dropdown-header">
+              <p class="user-dropdown-name">John Doe</p>
+              <p class="user-dropdown-role">Executive Director of JMU CARE</p>
+            </div>
+            <div class="user-dropdown-divider"></div>
+            <a href="#" class="user-dropdown-item">
+              <i class="fas fa-user"></i> Profile
+            </a>
+            <a href="#" class="user-dropdown-item">
+              <i class="fas fa-cog"></i> Settings
+            </a>
+            <div class="user-dropdown-divider"></div>
+            <a href="#" class="user-dropdown-item" id="logout-btn">
+              <i class="fas fa-sign-out-alt"></i> Log out
+            </a>
+          </div>
+        </div>
+        
+        <button class="mobile-menu-btn" aria-label="Open menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <div class="mobile-nav-header">
+      <div class="logo">JMU CARE</div>
+      <button class="mobile-nav-close" aria-label="Close menu">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="mobile-nav-user">
+      <p class="font-bold">John Doe</p>
+      <p class="text-muted">Executive Director of JMU CARE</p>
+      <div class="mobile-nav-divider"></div>
+    </div>
+    
+    <div class="mobile-nav-content">
+      <ul class="mobile-nav-list">
+        <li><a href="dashboard.html" class="mobile-nav-link">Home</a></li>
+        <li><a href="grant-application.html" class="mobile-nav-link">Grant Application</a></li>
+        <li><a href="project-application.html" class="mobile-nav-link">Project Application</a></li>
+        <li><a href="search.html?type=grants" class="mobile-nav-link">Search Grants</a></li>
+        <li><a href="search.html?type=projects" class="mobile-nav-link">Search Projects</a></li>
+        <li><a href="create-user.html" class="mobile-nav-link">Create User</a></li>
+        <li><a href="messages.html" class="mobile-nav-link">Messages</a></li>
+        <li><a href="report.html" class="mobile-nav-link">Report</a></li>
+        <li><a href="#" class="mobile-nav-link mobile-nav-logout" id="mobile-logout-btn">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Main Content -->
+  <main class="container py-4">
+    <button class="btn btn-ghost back-btn mb-6">
+      <i class="fas fa-arrow-left mr-2"></i> Back to Grants
+    </button>
+    
+    <div class="grant-details-container">
+      <!-- Main content -->
+      <div class="grant-details-main">
+        <div class="card mb-6">
+          <div class="card-header flex justify-between items-center">
+            <div>
+              <h1 id="grant-title" class="card-title text-2xl"></h1>
+              <p id="grant-category" class="text-muted"></p>
+            </div>
+            <span id="grant-status-badge" class="badge"></span>
+          </div>
+          
+          <div class="card-content">
+            <div class="tabs">
+              <div class="tabs-list">
+                <button class="tab-btn active" data-tab="overview">Overview</button>
+                <button class="tab-btn" data-tab="documents">Documents</button>
+              </div>
+              
+              <div class="tab-content active" id="overview-tab">
+                <div class="mb-4">
+                  <h3 class="text-lg font-medium mb-2">Description</h3>
+                  <p id="grant-description" class="text-muted"></p>
+                </div>
+                
+                <div class="grant-info-grid">
+                  <div class="grant-info-item">
+                    <i class="fas fa-calendar text-muted"></i>
+                    <div>
+                      <h4 class="text-sm font-medium">Timeline</h4>
+                      <p id="grant-timeline" class="text-sm text-muted"></p>
+                    </div>
+                  </div>
+                  
+                  <div class="grant-info-item">
+                    <i class="fas fa-dollar-sign text-muted"></i>
+                    <div>
+                      <h4 class="text-sm font-medium">Award Amount</h4>
+                      <p id="grant-amount" class="text-sm text-muted"></p>
+                    </div>
+                  </div>
+                  
+                  <div class="grant-info-item">
+                    <i class="fas fa-clock text-muted"></i>
+                    <div>
+                      <h4 class="text-sm font-medium">Submission Date</h4>
+                      <p id="grant-submission-date" class="text-sm text-muted"></p>
+                    </div>
+                  </div>
+                  
+                  <div class="grant-info-item">
+                    <i class="fas fa-clock text-muted"></i>
+                    <div>
+                      <h4 class="text-sm font-medium">Award Date</h4>
+                      <p id="grant-award-date" class="text-sm text-muted"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              
+              
+              
+              <div class="tab-content" id="documents-tab">
+                <h3 class="text-lg font-medium mb-3">Grant Documents</h3>
+                <div class="documents-list">
+                  <div class="document-item">
+                    <span>Grant Proposal.pdf</span>
+                    <button class="btn btn-ghost btn-sm">
+                      <i class="fas fa-download mr-2"></i> Download
+                    </button>
+                  </div>
+                  <div class="document-item">
+                    <span>Budget Worksheet.xlsx</span>
+                    <button class="btn btn-ghost btn-sm">
+                      <i class="fas fa-download mr-2"></i> Download
+                    </button>
+                  </div>
+                  <div class="document-item">
+                    <span>Research Protocol.docx</span>
+                    <button class="btn btn-ghost btn-sm">
+                      <i class="fas fa-download mr-2"></i> Download
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Sidebar -->
+      <div class="grant-details-sidebar">
+        <div class="card mb-6">
+          <div class="card-header">
+            <h3 class="text-lg font-medium">Project Lead</h3>
+          </div>
+          <div class="card-content">
+            <div class="flex items-center">
+              <div id="project-lead-avatar" class="avatar avatar-md mr-3"></div>
+              <div>
+                <p id="project-lead-name" class="font-medium"></p>
+                <p class="text-sm text-muted">Principal Investigator</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header flex justify-between items-center">
+            <h3 class="text-lg font-medium">Collaborators</h3>
+            <button id="add-collaborator-btn" class="btn btn-outline btn-sm">
+              <i class="fas fa-plus-circle mr-2"></i> Add
+            </button>
+          </div>
+          <div class="card-content">
+            <div id="collaborators-list" class="collaborators-list">
+              <!-- Collaborators will be populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Add Collaborator Modal -->
+    <div id="add-collaborator-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Add Collaborator</h3>
+          <button class="modal-close" aria-label="Close modal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="faculty-select">Select Faculty</label>
+            <select id="faculty-select">
+              <option value="" disabled selected>Select faculty member</option>
+              <!-- Faculty options will be populated by JavaScript -->
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="add-collaborator-submit" class="btn btn-primary">Add Collaborator</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/grant-details.js"></script>
+</body>
+</html>

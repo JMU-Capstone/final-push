@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generate Report | JMU CARE System</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/ripple.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/dropdown.css">
+  <style>
+    .report-card {
+      background-color: white;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+    
+    .report-card-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      background-color: white;
+    }
+    
+    .report-card-header h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    
+    .report-card-content {
+      padding: 1.5rem;
+    }
+    
+    .report-form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .report-form-group {
+      flex: 1 1 200px;
+    }
+    
+    .report-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+    }
+    
+    .report-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .report-table th {
+      background-color: #f9fafb;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .report-table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .report-table tr:last-child td {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-container">
+      <div class="flex items-center gap-2">
+        <a href="dashboard.html" class="logo">JMU CARE</a>
+      </div>
+      
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="dashboard.html" class="nav-link underline-link">Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="nav-link underline-link dropdown-toggle">Applications <i class="fas fa-chevron-down text-xs ml-2"></i></a>
+            <div class="dropdown-menu">
+              <a href="grant-application.html" class="dropdown-item">Grant Application</a>
+              <a href="project-application.html" class="dropdown-item">Project Application</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="nav-link underline-link dropdown-toggle">Search <i class="fas fa-chevron-down text-xs ml-2"></i></a>
+            <div class="dropdown-menu">
+              <a href="search.html?type=grants" class="dropdown-item">Search Grants</a>
+              <a href="search.html?type=projects" class="dropdown-item">Search Projects</a>
+            </div>
+          </li>
+          <li><a href="create-user.html" class="nav-link underline-link">Create User</a></li>
+          <li><a href="messages.html" class="nav-link underline-link">Messages</a></li>
+          <li><a href="report.html" class="nav-link underline-link">Report</a></li>
+        </ul>
+      </nav>
+      
+      <div class="user-nav">
+        <span class="user-welcome">Welcome, <span id="user-name" class="font-semibold">John</span></span>
+        <div class="user-dropdown">
+          <button class="user-dropdown-btn">
+            <div class="avatar avatar-sm">JD</div>
+          </button>
+          <div class="user-dropdown-content">
+            <div class="user-dropdown-header">
+              <p class="user-dropdown-name">John Doe</p>
+              <p class="user-dropdown-role">Executive Director of JMU CARE</p>
+            </div>
+            <div class="user-dropdown-divider"></div>
+            <a href="#" class="user-dropdown-item">
+              <i class="fas fa-user"></i> Profile
+            </a>
+            <a href="#" class="user-dropdown-item">
+              <i class="fas fa-cog"></i> Settings
+            </a>
+            <div class="user-dropdown-divider"></div>
+            <a href="#" class="user-dropdown-item" id="logout-btn">
+              <i class="fas fa-sign-out-alt"></i> Log out
+            </a>
+          </div>
+        </div>
+        
+        <button class="mobile-menu-btn" aria-label="Open menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <div class="mobile-nav-header">
+      <div class="logo">JMU CARE</div>
+      <button class="mobile-nav-close" aria-label="Close menu">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="mobile-nav-user">
+      <p class="font-bold">John Doe</p>
+      <p class="text-muted">Executive Director of JMU CARE</p>
+      <div class="mobile-nav-divider"></div>
+    </div>
+    
+    <div class="mobile-nav-content">
+      <ul class="mobile-nav-list">
+        <li><a href="dashboard.html" class="mobile-nav-link">Home</a></li>
+        <li><a href="grant-application.html" class="mobile-nav-link">Grant Application</a></li>
+        <li><a href="project-application.html" class="mobile-nav-link">Project Application</a></li>
+        <li><a href="search.html?type=grants" class="mobile-nav-link">Search Grants</a></li>
+        <li><a href="search.html?type=projects" class="mobile-nav-link">Search Projects</a></li>
+        <li><a href="create-user.html" class="mobile-nav-link">Create User</a></li>
+        <li><a href="messages.html" class="mobile-nav-link">Messages</a></li>
+        <li><a href="report.html" class="mobile-nav-link">Report</a></li>
+        <li><a href="#" class="mobile-nav-link mobile-nav-logout" id="mobile-logout-btn">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Main Content -->
+  <main class="container py-4">
+    <h1 class="gradient-text mb-6">Generate Report</h1>
+    
+    <!-- Report Parameters Card -->
+    <div class="report-card">
+      <div class="report-card-header">
+        <h2>Report Parameters</h2>
+      </div>
+      
+      <div class="report-card-content">
+        <form id="report-form" class="form">
+          <div class="report-form-row">
+            <div class="report-form-group">
+              <label for="report-type">Report Type</label>
+              <select id="report-type" required>
+                <option value="" disabled selected>Select Report Type</option>
+                <option value="grant-summary">Grant Summary</option>
+                <option value="project-status">Project Status</option>
+                <option value="funding-analysis">Funding Analysis</option>
+                <option value="timeline-overview">Timeline Overview</option>
+                <option value="custom">Custom Report</option>
+              </select>
+            </div>
+            
+            <div class="report-form-group">
+              <label for="start-date">Start Date</label>
+              <input type="date" id="start-date" class="w-full">
+            </div>
+            
+            <div class="report-form-group">
+              <label for="end-date">End Date</label>
+              <input type="date" id="end-date" class="w-full">
+            </div>
+
+            <div class="report-form-group">
+              <label for="status-filter">Status</label>
+              <select id="status-filter">
+                <option value="" selected>All Statuses</option>
+                <option value="Active">Active</option>
+                <option value="Pending">Pending</option>
+                <option value="Completed">Completed</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Planning">Planning</option>
+                <option value="Not Started">Not Started</option>
+              </select>
+            </div>
+            
+            <div class="report-form-group">
+              <label for="category-type">Category/Type</label>
+              <input type="text" id="category-type" placeholder="Enter category or type" class="w-full">
+            </div>
+            
+            <div class="report-form-group">
+              <label for="keyword-search">Keyword Search</label>
+              <input type="text" id="keyword-search" placeholder="Enter keyword (e.g. Name, Title)" class="w-full">
+            </div>
+          </div>
+          
+          <div class="report-actions">
+            <button type="button" id="clear-report-btn" class="btn btn-outline">
+              <i class="fas fa-times mr-2"></i> Clear
+            </button>
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-file-alt mr-2"></i> Generate Report
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    <!-- Report Results Card -->
+    <div class="report-card">
+      <div class="report-card-header">
+        <div class="flex justify-between items-center">
+          <h2>Report Results</h2>
+          <div class="flex items-center gap-3">
+            <button id="print-report-btn" class="btn btn-outline btn-sm">
+              <i class="fas fa-print mr-2"></i> Print
+            </button>
+            <button id="export-report-btn" class="btn btn-outline btn-sm">
+              <i class="fas fa-download mr-2"></i> Export
+            </button>
+            <button id="visualize-report-btn" class="btn btn-outline btn-sm">
+              <i class="fas fa-chart-bar mr-2"></i> Visualize
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="report-card-content">
+        <div id="report-visualization" class="hidden mb-4 p-4 bg-secondary rounded-lg">
+          <!-- Visualization will be rendered here -->
+          <div class="flex justify-center items-center py-6">
+            <div class="text-center">
+              <i class="fas fa-chart-bar text-4xl text-primary mb-4"></i>
+              <p class="text-muted">Select visualization type from the dropdown above</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="table-container">
+          <table id="report-table" class="report-table">
+            <thead>
+              <tr>
+                <th>Grant ID</th>
+                <th>Grant Title</th>
+                <th>Category</th>
+                <th>Funding Organization</th>
+                <th>Submission Date</th>
+                <th>Award Date</th>
+                <th>Amount</th>
+                <th>Project Lead</th>
+              </tr>
+            </thead>
+            <tbody id="report-table-body">
+              <!-- Sample data to show without scrolling -->
+              <tr>
+                <td>G001</td>
+                <td>Early Childhood Education Research</td>
+                <td>Research</td>
+                <td>National Science Foundation</td>
+                <td>May 15, 2023</td>
+                <td>Jul 20, 2023</td>
+                <td>$125,000</td>
+                <td>Dr. Sarah Johnson</td>
+              </tr>
+              <tr>
+                <td>G002</td>
+                <td>Community Literacy Program</td>
+                <td>Community Outreach</td>
+                <td>Department of Education</td>
+                <td>Apr 10, 2023</td>
+                <td>Jun 15, 2023</td>
+                <td>$75,000</td>
+                <td>Dr. David Kim</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div id="no-report-data" class="py-6 text-center hidden">
+          <i class="fas fa-file-alt text-4xl text-muted mb-4"></i>
+          <h3 class="text-lg font-medium mb-2">No report data available</h3>
+          <p class="text-muted">Generate a report using the parameters above</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/report.js"></script>
+</body>
+</html>

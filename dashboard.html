@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | JMU CARE System</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/dropdown.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-container">
+      <div class="flex items-center gap-2">
+        <a href="dashboard.html" class="logo">JMU CARE</a>
+      </div>
+      
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="dashboard.html" class="nav-link underline-link">Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="nav-link underline-link dropdown-toggle">Applications <i class="fas fa-chevron-down text-xs ml-2"></i></a>
+            <div class="dropdown-menu">
+              <a href="grant-application.html" class="dropdown-item">Grant Application</a>
+              <a href="project-application.html" class="dropdown-item">Project Application</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="nav-link underline-link dropdown-toggle">Search <i class="fas fa-chevron-down text-xs ml-2"></i></a>
+            <div class="dropdown-menu">
+              <a href="search.html?type=grants" class="dropdown-item">Search Grants</a>
+              <a href="search.html?type=projects" class="dropdown-item">Search Projects</a>
+            </div>
+          </li>
+          <li><a href="create-user.html" class="nav-link underline-link">Create User</a></li>
+          <li><a href="messages.html" class="nav-link underline-link">Messages</a></li>
+          <li><a href="report.html" class="nav-link underline-link">Report</a></li>
+        </ul>
+      </nav>
+      
+      <div class="user-nav">
+        <span class="user-welcome">Welcome, <span id="user-name" class="font-semibold">John</span></span>
+        <div class="user-dropdown">
+          <button class="user-dropdown-btn">
+            <div class="avatar avatar-sm">JD</div>
+          </button>
+          <div class="user-dropdown-content">
+            <div class="user-dropdown-header">
+              <p class="user-dropdown-name">John Doe</p>
+              <p class="user-dropdown-role">Executive Director of JMU CARE</p>
+            </div>
+            <div class="user-dropdown-divider"></div>
+            <a href="#" class="user-dropdown-item">
+              <i class="fas fa-user"></i> Profile
+            </a>
+            <a href="#" class="user-dropdown-item">
+              <i class="fas fa-cog"></i> Settings
+            </a>
+            <div class="user-dropdown-divider"></div>
+            <a href="#" class="user-dropdown-item" id="logout-btn">
+              <i class="fas fa-sign-out-alt"></i> Log out
+            </a>
+          </div>
+        </div>
+        
+        <button class="mobile-menu-btn" aria-label="Open menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <div class="mobile-nav-header">
+      <div class="logo">JMU CARE</div>
+      <button class="mobile-nav-close" aria-label="Close menu">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="mobile-nav-user">
+      <p class="font-bold">John Doe</p>
+      <p class="text-muted">Executive Director of JMU CARE</p>
+      <div class="mobile-nav-divider"></div>
+    </div>
+    
+    <div class="mobile-nav-content">
+      <ul class="mobile-nav-list">
+        <li><a href="dashboard.html" class="mobile-nav-link">Home</a></li>
+        <li><a href="grant-application.html" class="mobile-nav-link">Grant Application</a></li>
+        <li><a href="project-application.html" class="mobile-nav-link">Project Application</a></li>
+        <li><a href="search.html?type=grants" class="mobile-nav-link">Search Grants</a></li>
+        <li><a href="search.html?type=projects" class="mobile-nav-link">Search Projects</a></li>
+        <li><a href="create-user.html" class="mobile-nav-link">Create User</a></li>
+        <li><a href="messages.html" class="mobile-nav-link">Messages</a></li>
+        <li><a href="report.html" class="mobile-nav-link">Report</a></li>
+        <li><a href="#" class="mobile-nav-link mobile-nav-logout" id="mobile-logout-btn">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Main Content -->
+  <main class="container py-8">
+    <h1 class="gradient-text mb-6">Dashboard</h1>
+    
+    <!-- Grant Overview -->
+    <section class="card mb-8">
+      <div class="card-header flex justify-between items-center">
+        <h2 class="card-title">Grant Overview</h2>
+        <div class="flex items-center gap-3">
+          <div class="search-container">
+            <input type="text" id="grant-search" class="search-input" placeholder="Search grants...">
+            <i class="fas fa-search search-icon"></i>
+          </div>
+          <div class="dropdown">
+            <button class="btn btn-outline btn-sm dropdown-toggle">
+              <i class="fas fa-filter mr-2"></i> Filter
+            </button>
+            <div class="dropdown-menu">
+              <a href="#" class="dropdown-item" data-filter="">All Grants</a>
+              <a href="#" class="dropdown-item" data-filter="Active">Active</a>
+              <a href="#" class="dropdown-item" data-filter="Pending">Pending</a>
+              <a href="#" class="dropdown-item" data-filter="Completed">Completed</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card-content">
+        <div class="table-container">
+          <table id="grants-table">
+            <thead>
+              <tr>
+                <th>Grant Title</th>
+                <th>Category</th>
+                <th>Funding Organization</th>
+                <th>Submission Date</th>
+                <th>Award Date</th>
+                <th>Award Amount</th>
+                <th>Project Lead</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Table rows will be populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="dashboard-action-section">
+          <div class="dashboard-action-content">
+            <h3 class="text-lg font-medium">New Grant Assignment</h3>
+            <a href="grant-application.html" class="btn btn-primary">
+              <i class="fas fa-plus-circle mr-2"></i> Create New Grant Application
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Project Grants Overview -->
+    <section class="card mb-8">
+      <div class="card-header flex justify-between items-center">
+        <h2 class="card-title">Project Grants Overview</h2>
+        <div class="flex items-center gap-3">
+          <div class="search-container">
+            <input type="text" id="project-search" class="search-input" placeholder="Search projects...">
+            <i class="fas fa-search search-icon"></i>
+          </div>
+          <div class="dropdown">
+            <button class="btn btn-outline btn-sm dropdown-toggle">
+              <i class="fas fa-filter mr-2"></i> Filter
+            </button>
+            <div class="dropdown-menu">
+              <a href="#" class="dropdown-item" data-filter="">All Projects</a>
+              <a href="#" class="dropdown-item" data-filter="In Progress">In Progress</a>
+              <a href="#" class="dropdown-item" data-filter="Planning">Planning</a>
+              <a href="#" class="dropdown-item" data-filter="Not Started">Not Started</a>
+              <a href="#" class="dropdown-item" data-filter="Completed">Completed</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card-content">
+        <div class="table-container">
+          <table id="projects-table">
+            <thead>
+              <tr>
+                <th>Project Title</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Project Administrator</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Table rows will be populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="dashboard-action-section">
+          <div class="dashboard-action-content">
+            <h3 class="text-lg font-medium">New Project Admin</h3>
+            <a href="project-admin.html" class="btn btn-primary">
+              <i class="fas fa-plus-circle mr-2"></i> Create New Project Admin
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calendar Section -->
+    <section class="card mb-8">
+      <div class="card-header flex justify-between items-center">
+        <h2 class="card-title">Calendar</h2>
+        <div class="flex items-center gap-3">
+          <button class="btn btn-outline btn-sm" id="prev-month">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="btn btn-primary btn-sm" id="today-btn">Today</button>
+          <button class="btn btn-outline btn-sm" id="next-month">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+      
+      <div class="card-content">
+        <div class="calendar-container">
+          <h3 id="calendar-month-year" class="text-xl font-medium mb-4">April 2025</h3>
+          
+          <div class="calendar-grid">
+            <div class="calendar-header">
+              <div class="calendar-cell">Sun</div>
+              <div class="calendar-cell">Mon</div>
+              <div class="calendar-cell">Tue</div>
+              <div class="calendar-cell">Wed</div>
+              <div class="calendar-cell">Thu</div>
+              <div class="calendar-cell">Fri</div>
+              <div class="calendar-cell">Sat</div>
+            </div>
+            
+            <div class="calendar-body" id="calendar-body">
+              <!-- Calendar cells will be populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>

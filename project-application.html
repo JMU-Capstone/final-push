@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Application | JMU CARE System</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/dropdown.css">
+  <link rel="stylesheet" href="css/ripple.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-container">
+      <div class="flex items-center gap-2">
+        <a href="dashboard.html" class="logo">JMU CARE</a>
+      </div>
+      
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="dashboard.html" class="nav-link underline-link">Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="nav-link underline-link dropdown-toggle">Applications <i class="fas fa-chevron-down text-xs ml-2"></i></a>
+            <div class="dropdown-menu">
+              <a href="grant-application.html" class="dropdown-item">Grant Application</a>
+              <a href="project-application.html" class="dropdown-item">Project Application</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="nav-link underline-link dropdown-toggle">Search <i class="fas fa-chevron-down text-xs ml-2"></i></a>
+            <div class="dropdown-menu">
+              <a href="search.html?type=grants" class="dropdown-item">Search Grants</a>
+              <a href="search.html?type=projects" class="dropdown-item">Search Projects</a>
+            </div>
+          </li>
+          <li><a href="create-user.html" class="nav-link underline-link">Create User</a></li>
+          <li><a href="messages.html" class="nav-link underline-link">Messages</a></li>
+          <li><a href="report.html" class="nav-link underline-link">Report</a></li>
+        </ul>
+      </nav>
+      
+      <div class="user-nav">
+        <span class="user-welcome">Welcome, <span id="user-name">John</span></span>
+        <div class="user-dropdown">
+          <button class="user-dropdown-btn">
+            <div class="avatar avatar-sm">JD</div>
+          </button>
+          <div class="user-dropdown-content">
+            <div class="user-dropdown-header">
+              <p class="user-dropdown-name">John Doe</p>
+              <p class="user-dropdown-role">Executive Director of JMU CARE</p>
+            </div>
+            <div class="user-dropdown-divider"></div>
+            <a href="#" class="user-dropdown-item">
+              <i class="fas fa-user"></i> Profile
+            </a>
+            <a href="#" class="user-dropdown-item">
+              <i class="fas fa-cog"></i> Settings
+            </a>
+            <div class="user-dropdown-divider"></div>
+            <a href="#" class="user-dropdown-item" id="logout-btn">
+              <i class="fas fa-sign-out-alt"></i> Log out
+            </a>
+          </div>
+        </div>
+        
+        <button class="mobile-menu-btn" aria-label="Open menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <div class="mobile-nav-header">
+      <div class="logo">JMU CARE</div>
+      <button class="mobile-nav-close" aria-label="Close menu">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="mobile-nav-user">
+      <p class="font-bold">John Doe</p>
+      <p class="text-muted">Executive Director of JMU CARE</p>
+      <div class="mobile-nav-divider"></div>
+    </div>
+    
+    <div class="mobile-nav-content">
+      <ul class="mobile-nav-list">
+        <li><a href="dashboard.html" class="mobile-nav-link">Home</a></li>
+        <li><a href="grant-application.html" class="mobile-nav-link">Grant Application</a></li>
+        <li><a href="project-application.html" class="mobile-nav-link">Project Application</a></li>
+        <li><a href="search.html?type=grants" class="mobile-nav-link">Search Grants</a></li>
+        <li><a href="search.html?type=projects" class="mobile-nav-link">Search Projects</a></li>
+        <li><a href="create-user.html" class="mobile-nav-link">Create User</a></li>
+        <li><a href="messages.html" class="mobile-nav-link">Messages</a></li>
+        <li><a href="report.html" class="mobile-nav-link">Report</a></li>
+        <li><a href="#" class="mobile-nav-link mobile-nav-logout" id="mobile-logout-btn">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Main Content -->
+  <main class="container py-4">
+    <div class="card">
+      <div class="card-header">
+        <h1 class="card-title text-2xl text-primary">Project Application</h1>
+      </div>
+      
+      <div class="card-content">
+        <form id="project-application-form" class="form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="admin-name">Admin Name</label>
+              <select id="admin-name" required>
+                <option value="" disabled selected>Select admin</option>
+                <option value="Dr. Sarah Johnson">Dr. Sarah Johnson</option>
+                <option value="Dr. Michael Chen">Dr. Michael Chen</option>
+                <option value="Dr. Emily Rodriguez">Dr. Emily Rodriguez</option>
+                <option value="Dr. David Kim">Dr. David Kim</option>
+                <option value="Dr. Lisa Patel">Dr. Lisa Patel</option>
+                <option value="Dr. James Wilson">Dr. James Wilson</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="project-status">Project Status</label>
+              <select id="project-status" required>
+                <option value="" disabled selected>Select status</option>
+                <option value="Not Started">Not Started</option>
+                <option value="Planning">Planning</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="project-title">Project Title</label>
+              <input type="text" id="project-title" placeholder="Enter project title" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="due-date">Due Date</label>
+              <div class="date-input">
+                <input type="date" id="due-date" required>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="related-grant">Related Grant</label>
+              <select id="related-grant">
+                <option value="" selected>Select grant (optional)</option>
+                <option value="G001">Early Childhood Education Research</option>
+                <option value="G002">Community Literacy Program</option>
+                <option value="G003">Technology Integration in Special Education</option>
+                <option value="G004">Professional Development for Educators</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-actions">
+            <button type="button" id="clear-form-btn" class="btn btn-outline">Clear</button>
+            <button type="submit" class="btn btn-primary">Add Project</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/project-application.js"></script>
+</body>
+</html>

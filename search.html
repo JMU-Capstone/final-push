@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search | JMU CARE System</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/ripple.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/dropdown.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-container">
+      <div class="flex items-center gap-2">
+        <a href="dashboard.html" class="logo">JMU CARE</a>
+      </div>
+      
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="dashboard.html" class="nav-link underline-link">Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="nav-link underline-link dropdown-toggle">Applications <i class="fas fa-chevron-down text-xs ml-2"></i></a>
+            <div class="dropdown-menu">
+              <a href="grant-application.html" class="dropdown-item">Grant Application</a>
+              <a href="project-application.html" class="dropdown-item">Project Application</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="nav-link underline-link dropdown-toggle">Search <i class="fas fa-chevron-down text-xs ml-2"></i></a>
+            <div class="dropdown-menu">
+              <a href="search.html?type=grants" class="dropdown-item">Search Grants</a>
+              <a href="search.html?type=projects" class="dropdown-item">Search Projects</a>
+            </div>
+          </li>
+          <li><a href="create-user.html" class="nav-link underline-link">Create User</a></li>
+          <li><a href="messages.html" class="nav-link underline-link">Messages</a></li>
+          <li><a href="report.html" class="nav-link underline-link">Report</a></li>
+        </ul>
+      </nav>
+      
+      <div class="user-nav">
+        <span class="user-welcome">Welcome, <span id="user-name" class="font-semibold">John</span></span>
+        <div class="user-dropdown">
+          <button class="user-dropdown-btn">
+            <div class="avatar avatar-sm">JD</div>
+          </button>
+          <div class="user-dropdown-content">
+            <div class="user-dropdown-header">
+              <p class="user-dropdown-name">John Doe</p>
+              <p class="user-dropdown-role">Executive Director of JMU CARE</p>
+            </div>
+            <div class="user-dropdown-divider"></div>
+            <a href="#" class="user-dropdown-item">
+              <i class="fas fa-user"></i> Profile
+            </a>
+            <a href="#" class="user-dropdown-item">
+              <i class="fas fa-cog"></i> Settings
+            </a>
+            <div class="user-dropdown-divider"></div>
+            <a href="#" class="user-dropdown-item" id="logout-btn">
+              <i class="fas fa-sign-out-alt"></i> Log out
+            </a>
+          </div>
+        </div>
+        
+        <button class="mobile-menu-btn" aria-label="Open menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <div class="mobile-nav-header">
+      <div class="logo">JMU CARE</div>
+      <button class="mobile-nav-close" aria-label="Close menu">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="mobile-nav-user">
+      <p class="font-bold">John Doe</p>
+      <p class="text-muted">Executive Director of JMU CARE</p>
+      <div class="mobile-nav-divider"></div>
+    </div>
+    
+    <div class="mobile-nav-content">
+      <ul class="mobile-nav-list">
+        <li><a href="dashboard.html" class="mobile-nav-link">Home</a></li>
+        <li><a href="grant-application.html" class="mobile-nav-link">Grant Application</a></li>
+        <li><a href="project-application.html" class="mobile-nav-link">Project Application</a></li>
+        <li><a href="search.html?type=grants" class="mobile-nav-link">Search Grants</a></li>
+        <li><a href="search.html?type=projects" class="mobile-nav-link">Search Projects</a></li>
+        <li><a href="create-user.html" class="mobile-nav-link">Create User</a></li>
+        <li><a href="messages.html" class="mobile-nav-link">Messages</a></li>
+        <li><a href="report.html" class="mobile-nav-link">Report</a></li>
+        <li><a href="#" class="mobile-nav-link mobile-nav-logout" id="mobile-logout-btn">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Main Content -->
+  <main class="container py-4">
+    <h1 id="search-title" class="gradient-text mb-4">Search Grants</h1>
+    <p class="text-muted mb-4">Find and filter grants or projects in the CARE system.</p>
+    
+    <div class="card mb-4">
+      <div class="card-header">
+        <h2 class="card-title">Search Criteria</h2>
+      </div>
+      
+      <div class="card-content">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="form-group">
+            <label for="search-by">Search by:</label>
+            <select id="search-by" class="w-full">
+              <option value="title">Title</option>
+              <option value="category">Category</option>
+              <option value="funding">Funding Organization</option>
+              <option value="lead">Project Lead</option>
+              <option value="status">Status</option>
+            </select>
+          </div>
+          
+          <div class="form-group md:col-span-2">
+            <label for="search-value">Enter Value:</label>
+            <div class="flex gap-3">
+              <input type="text" id="search-value" placeholder="Type here..." class="w-full">
+              <button id="search-btn" class="btn btn-primary">
+                <i class="fas fa-search mr-2"></i> Search
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flex justify-end mt-2">
+          <button id="advanced-search-toggle" class="btn btn-ghost">
+            <i class="fas fa-sliders-h mr-2"></i> Advanced Search
+          </button>
+        </div>
+        
+        <div id="advanced-search" class="hidden mt-3 p-3 bg-secondary rounded-lg">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="form-group">
+              <label for="date-from">From Date:</label>
+              <input type="date" id="date-from" class="w-full">
+            </div>
+            
+            <div class="form-group">
+              <label for="date-to">To Date:</label>
+              <input type="date" id="date-to" class="w-full">
+            </div>
+            
+            <div class="form-group">
+              <label for="amount-min">Min Amount:</label>
+              <input type="number" id="amount-min" placeholder="0" class="w-full">
+            </div>
+            
+            <div class="form-group">
+              <label for="amount-max">Max Amount:</label>
+              <input type="number" id="amount-max" placeholder="Any" class="w-full">
+            </div>
+          </div>
+          
+          <div class="flex justify-end mt-3">
+            <button id="clear-filters-btn" class="btn btn-outline mr-3">
+              <i class="fas fa-times mr-2"></i> Clear Filters
+            </button>
+            <button id="apply-filters-btn" class="btn btn-primary">
+              <i class="fas fa-check mr-2"></i> Apply Filters
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-header flex justify-between items-center">
+        <h2 class="card-title">Results</h2>
+        <div class="flex items-center gap-3">
+          <div class="dropdown">
+            <button class="btn btn-outline btn-sm dropdown-toggle">
+              <i class="fas fa-filter mr-2"></i> Filter
+            </button>
+            <div class="dropdown-menu">
+              <a href="#" class="dropdown-item" data-filter="">All</a>
+              <a href="#" class="dropdown-item" data-filter="Active">Active</a>
+              <a href="#" class="dropdown-item" data-filter="Pending">Pending</a>
+              <a href="#" class="dropdown-item" data-filter="Completed">Completed</a>
+            </div>
+          </div>
+          <button id="export-btn" class="btn btn-outline btn-sm">
+            <i class="fas fa-download mr-2"></i> Export
+          </button>
+        </div>
+      </div>
+      
+      <div class="card-content">
+        <div class="table-container">
+          <table id="search-results-table">
+            <thead>
+              <tr id="table-headers">
+                <!-- Headers will be populated by JavaScript based on search type -->
+              </tr>
+            </thead>
+            <tbody id="search-results-body">
+              <!-- Sample data to show without scrolling -->
+              <tr class="grant-row" data-id="G001">
+                <td class="font-medium">Early Childhood Education Research</td>
+                <td>Research</td>
+                <td>National Science Foundation</td>
+                <td>May 15, 2023</td>
+                <td>Jul 20, 2023</td>
+                <td>$125,000</td>
+                <td>Dr. Sarah Johnson</td>
+                <td><span class="badge badge-active">Active</span></td>
+              </tr>
+              <tr class="grant-row" data-id="G002">
+                <td class="font-medium">Community Literacy Program</td>
+                <td>Community Outreach</td>
+                <td>Department of Education</td>
+                <td>Apr 10, 2023</td>
+                <td>Jun 15, 2023</td>
+                <td>$75,000</td>
+                <td>Dr. David Kim</td>
+                <td><span class="badge badge-active">Active</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div id="no-results" class="hidden py-6 text-center">
+          <i class="fas fa-search text-4xl text-muted mb-4"></i>
+          <h3 class="text-lg font-medium mb-2">No results found</h3>
+          <p class="text-muted">Try adjusting your search criteria</p>
+        </div>
+        
+        <div class="flex justify-between items-center mt-4">
+          <div class="text-sm text-muted">
+            Showing <span id="results-count">2</span> results
+          </div>
+          
+          <div class="flex items-center gap-2">
+            <button class="btn btn-outline btn-sm pagination-btn" disabled>
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <span class="text-sm">Page <span id="current-page">1</span> of <span id="total-pages">1</span></span>
+            <button class="btn btn-outline btn-sm pagination-btn" disabled>
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/search.js"></script>
+</body>
+</html>
