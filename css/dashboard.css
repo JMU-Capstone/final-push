@@ -1,0 +1,126 @@
+/* Dashboard specific styles */
+
+/* Search */
+.search-container {
+  position: relative;
+  width: 240px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+}
+
+.search-input {
+  padding-left: 2.25rem;
+  border-radius: var(--radius-full);
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.5rem);
+  width: 180px;
+  background-color: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  z-index: 10;
+  display: none;
+}
+
+.dropdown.active .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  transition: background-color var(--transition-fast);
+}
+
+.dropdown-item:hover {
+  background-color: var(--secondary);
+}
+
+/* User Dropdown */
+.user-dropdown {
+  position: relative;
+}
+
+.user-dropdown-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.user-dropdown-content {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.5rem);
+  width: 220px;
+  background-color: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  z-index: 10;
+  display: none;
+}
+
+.user-dropdown.active .user-dropdown-content {
+  display: block;
+}
+
+.user-dropdown-header {
+  padding: 0.75rem 1rem;
+}
+
+.user-dropdown-name {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.user-dropdown-role {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+.user-dropdown-divider {
+  height: 1px;
+  background-color: var(--border);
+  margin: 0.25rem 0;
+}
+
+.user-dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  transition: background-color var(--transition-fast);
+}
+
+.user-dropdown-item i {
+  margin-right: 0.5rem;
+  width: 1rem;
+}
+
+.user-dropdown-item:hover {
+  background-color: var(--secondary);
+}
